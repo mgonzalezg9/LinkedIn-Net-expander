@@ -1,0 +1,376 @@
+{
+  "id": "5e8ba14f-8556-4ede-bcc2-f399b760fb95",
+  "version": "2.0",
+  "name": "LinkedIn",
+  "url": "https://www.linkedin.com/search/results/people/?geoUrn=%5B%22102890719%22%5D&network=%5B%22S%22%5D&origin=FACETED_SEARCH&page=6&schoolFilter=%5B%22481259%22%2C%2215092652%22%2C%22603842%22%5D&sid=)**",
+  "tests": [{
+    "id": "1370d6c5-4917-4688-97ce-e23eece1e258",
+    "name": "Create connections",
+    "commands": [{
+      "id": "60f737a7-3488-48f1-95db-98c65e80799c",
+      "comment": "",
+      "command": "store",
+      "target": "https://www.linkedin.com/search/results/people/?geoUrn=%5B%22102890719%22%5D&network=%5B%22S%22%5D&origin=FACETED_SEARCH&sid=T7Q",
+      "targets": [],
+      "value": "webPage"
+    }, {
+      "id": "4bdf642a-fb3f-44a5-aa2e-9f4d673e3494",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return 1",
+      "targets": [],
+      "value": "page"
+    }, {
+      "id": "3cf8e03a-090d-49c5-834e-3b7ac91d4103",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return 10",
+      "targets": [],
+      "value": "maxPage"
+    }, {
+      "id": "e8d3276e-b24b-401b-8a49-2f53b4fac783",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return 0",
+      "targets": [],
+      "value": "newConnections"
+    }, {
+      "id": "0ada499c-f6c6-492a-aad1-c7902e4d7fc6",
+      "comment": "",
+      "command": "while",
+      "target": "${page} < ${maxPage}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "314c4795-a40f-4335-bccb-437ff6a848ff",
+      "comment": "",
+      "command": "echo",
+      "target": "Page=${page}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4fc8cf03-d6c0-4b0d-aa7b-4a2757035667",
+      "comment": "",
+      "command": "open",
+      "target": "${webPage}&page=${page}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4094f765-1748-46c9-8d91-f8ae3721dfa3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f7eb1405-2445-45df-8726-d26ebf7d065d",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "//span[contains(@class, 'artdeco-button__text')]",
+      "targets": [
+        ["css=.global-nav__branding-logo .mercado-match", "css:finder"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "8252bf42-512e-4d72-ab9e-a28ffae6e627",
+      "comment": "",
+      "command": "storeXpathCount",
+      "target": "xpath=//span[contains(@class, 'artdeco-button__text') and text()='Connect']",
+      "targets": [],
+      "value": "connectButtons"
+    }, {
+      "id": "53bd984c-8796-4432-a8af-4c8aaed5d515",
+      "comment": "",
+      "command": "echo",
+      "target": "\"Connect\" buttons=${connectButtons}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b02c94d1-af67-419f-ab46-9a4d6d9a79db",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return 1",
+      "targets": [],
+      "value": "i"
+    }, {
+      "id": "51f11a9c-a4e4-4da3-8ed9-5882995c5001",
+      "comment": "",
+      "command": "while",
+      "target": "${i} <= ${connectButtons}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec6c719c-fb0f-4336-85de-094827512299",
+      "comment": "",
+      "command": "echo",
+      "target": "Clicking on button ${i}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a5fa37fc-0844-46a9-8f6d-760586e15daf",
+      "comment": "",
+      "command": "clickAt",
+      "target": "xpath=(//span[contains(@class, 'artdeco-button__text') and text()='Connect'])",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8dfa674a-c055-44ae-a99d-98d03bd99b68",
+      "comment": "",
+      "command": "clickAt",
+      "target": "xpath=(//span[contains(@class, 'artdeco-button__text') and text()='Send'])",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e686c362-abc2-4c8d-9d37-8cef6d097517",
+      "comment": "",
+      "command": "pause",
+      "target": "500",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a69662e7-30f0-4021-adc4-b45e103da7a2",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return ${i} + 1",
+      "targets": [],
+      "value": "i"
+    }, {
+      "id": "28a7c1ee-84c0-4ee5-9e4a-4370495e4a8e",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "595d81ff-9466-4cc7-9f7e-2aace9135aec",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return ${newConnections} + Number(${connectButtons})",
+      "targets": [],
+      "value": "newConnections"
+    }, {
+      "id": "b23572d2-fae2-48ef-aa5e-09dfa1d5d6c7",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return ${page} + 1",
+      "targets": [],
+      "value": "page"
+    }, {
+      "id": "96bcfa4d-ecf4-4783-872b-9f02c0d9a564",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "657d69a0-72b6-43cd-ae2f-fc9b8a493006",
+      "comment": "",
+      "command": "echo",
+      "target": "** New connections: ${newConnections} **",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5ad61312-508b-4d1b-bc99-5dafb2b1638c",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "64ebaa44-f6a3-47e0-8724-00bd5aee0ec6",
+    "name": "While test",
+    "commands": [{
+      "id": "25a6efb1-5d96-40d9-bb2b-75d00e3dda48",
+      "comment": "",
+      "command": "open",
+      "target": "omayo.blogspot.com",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f455993f-37f6-4461-a2a8-7192b8f15a97",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return 1",
+      "targets": [],
+      "value": "x"
+    }, {
+      "id": "77c741a9-7265-4dc7-a80d-5b192d803379",
+      "comment": "",
+      "command": "while",
+      "target": "${x} < 5",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e3aead8b-50d9-4154-bfd0-be7f828b3a8c",
+      "comment": "",
+      "command": "echo",
+      "target": "${x}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4333fe12-5d11-4d0d-b6fa-44dc6e315c7e",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return ${x} + 1",
+      "targets": [],
+      "value": "x"
+    }, {
+      "id": "ded08476-bf35-49c2-acc9-ecd01ac55520",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec6721d2-4e03-46e8-923c-d3566c0808ab",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "b3ec8a43-6381-4124-9293-f5625cc88c03",
+    "name": "Spam connections (Not working)",
+    "commands": [{
+      "id": "60aaa849-8692-41cc-8b3e-068e31ad0b55",
+      "comment": "",
+      "command": "store",
+      "target": "https://www.linkedin.com/mynetwork/invite-connect/connections/",
+      "targets": [],
+      "value": "myNetworkPage"
+    }, {
+      "id": "2c95c4fe-dc89-4884-a939-daaf8f6f6f91",
+      "comment": "",
+      "command": "open",
+      "target": "${myNetworkPage}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9cbde9d6-d205-4cfd-8b8d-40e379c6863b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1053",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e0b7a7d2-28e8-4116-aa90-94dcaccd8d90",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return 1",
+      "targets": [],
+      "value": "maxSpams"
+    }, {
+      "id": "10fdd6ba-3435-4ba7-9f40-a9b161950660",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return 0",
+      "targets": [],
+      "value": "newSpams"
+    }, {
+      "id": "0ab5babb-7dc6-40a6-a13c-4971a466ef2d",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "//span[contains(@class, 'artdeco-button__text')]",
+      "targets": [
+        ["css=.global-nav__branding-logo .mercado-match", "css:finder"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "e6cd0dcf-116b-411f-b64a-6e97b3a01804",
+      "comment": "",
+      "command": "storeXpathCount",
+      "target": "xpath=//span[contains(@class, 'artdeco-button__text') and text()='Message']",
+      "targets": [],
+      "value": "messageButtons"
+    }, {
+      "id": "ff6db02c-5199-4a75-8e24-f5481c1131a1",
+      "comment": "",
+      "command": "echo",
+      "target": "\"Message\" buttons=${messageButtons}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a830bd1f-0f82-4f9e-8e14-2692c8746312",
+      "comment": "",
+      "command": "while",
+      "target": "${newSpams} <= ${messageButtons} && ${newSpams} < ${maxSpams}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "749616e6-713b-4f21-a4ba-8466f41f1212",
+      "comment": "",
+      "command": "echo",
+      "target": "Clicking on button ${newSpams}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "47ea48ae-2441-44cc-af04-52f52c83999e",
+      "comment": "",
+      "command": "clickAt",
+      "target": "xpath=(//span[contains(@class, 'artdeco-button__text') and text()='Message'])",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d4851829-12d8-4c8e-aace-d656f4241078",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "xpath=(//div[contains(@class, 'msg-form__contenteditable')])",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "4ca37619-970a-4f7e-99f8-e1fa0cf82c76",
+      "comment": "",
+      "command": "storeText",
+      "target": "xpath=(//div[contains(@class, 'msg-form__contenteditable')])",
+      "targets": [],
+      "value": "Hey"
+    }, {
+      "id": "9583707a-1571-4668-b617-c78868946f60",
+      "comment": "",
+      "command": "clickAt",
+      "target": "xpath=(//button[contains(@class, 'artdeco-button--muted')])",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5aa0b39b-00f6-4172-b3bd-83b626c6c885",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return ${newSpams} + 1",
+      "targets": [],
+      "value": "i"
+    }, {
+      "id": "be4b80b9-f10e-4b43-b24c-4757aa7d18e5",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "279025fe-eb81-4c6a-abb2-75d1837739f4",
+      "comment": "",
+      "command": "echo",
+      "target": "** Spammed to ${newSpams} people **",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "014b73b6-1894-4397-a2c3-0e9a60da25f6",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "c2b74ded-b8e8-47ba-964e-0d6b6fffe62e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1370d6c5-4917-4688-97ce-e23eece1e258"]
+  }],
+  "urls": ["https://www.linkedin.com/search/results/people/?geoUrn=%5B%22102890719%22%5D&network=%5B%22S%22%5D&origin=FACETED_SEARCH&page=5&schoolFilter=%5B%22481259%22%2C%2215092652%22%2C%22603842%22%5D&sid=LaF", "https://www.linkedin.com/search/results/people/?geoUrn=%5B%22102890719%22%5D&network=%5B%22S%22%5D&origin=FACETED_SEARCH&page=6&schoolFilter=%5B%22481259%22%2C%2215092652%22%2C%22603842%22%5D&sid=)**"],
+  "plugins": []
+}
